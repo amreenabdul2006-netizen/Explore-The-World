@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore The World | Luxury Travel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <h2>EXPLORE <span>THE WORLD</span></h2>
+        <div class="nav-links">
+            <a href="#home" onclick="closeMenu()">Home</a>
+<a href="#destinations" onclick="closeMenu()">Destinations</a>
+<a href="#about" onclick="closeMenu()">About</a>
+<a href="#contact" onclick="closeMenu()">Contact</a>
+        </div>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <p class="tagline">DISCOVER THE EXTRAORDINARY</p>
+    <h1>Travel Beyond<br>Ordinary</h1>
+    <p>Explore the world's most beautiful destinations.</p>
+    <a href="#destinations" class="btn">EXPLORE DESTINATIONS</a>
+</section>
+
+<section id="about" class="about">
+    <p class="tagline">WELCOME TO OUR WORLD</p>
+    <h2>Where Every Journey Becomes a Story</h2>
+    <p>We bring you closer to extraordinary places,
+    unforgettable experiences and beautiful cultures.</p>
+</section>
+
+<section id="destinations">
+    <p class="tagline">EXPLORE THE WORLD</p>
+    <h2>Popular Destinations</h2>
+<input
+    type="text"
+    id="searchBox"
+    placeholder="Search your dream destination..."
+    onkeyup="searchDestinations()"
+>
+
+    <div class="cards">
+        <div class="card">
+            <div class="photo kashmir"></div>
+            <h3>Kashmir, India</h3>
+            <p>A paradise of mountains and lakes.</p>
+<button class="details-btn" onclick="showDetails('Kashmir')">View Details</button>
+        </div>
+
+        <div class="card">
+            <div class="photo goa"></div>
+            <h3>Goa, India</h3>
+            <p>Beautiful beaches and golden sunsets.</p>
+<button class="details-btn" onclick="showDetails('Goa')">View Details</button>
+        </div>
+
+        <div class="card">
+            <div class="photo paris"></div>
+            <h3>Paris, France</h3>
+            <p>Romance, art and timeless beauty.</p>
+  <button class="details-btn" onclick="showDetails('Paris')">View Details</button>
+      </div>
+
+        <div class="card">
+            <div class="photo switzerland"></div>
+            <h3>Switzerland</h3>
+            <p>Dreamy mountains and scenic views.</p>
+<button class="details-btn" onclick="showDetails('Switzerland')">View Details</button>
+        </div>
+<div class="card">
+    <div class="photo london"></div>
+    <h3>London</h3>
+    <p>Historic landmarks and vibrant city life.</p>
+    <button class="details-btn" onclick="showDetails('London')">View Details</button>
+</div>
+
+<div class="card">
+    <div class="photo dubai"></div>
+    <h3>Dubai</h3>
+    <p>Luxury, adventure and stunning architecture.</p>
+    <button class="details-btn" onclick="showDetails('Dubai')">View Details</button>
+</div>
+
+<div class="card">
+    <div class="photo bali"></div>
+    <h3>Bali</h3>
+    <p>Tropical beaches and peaceful nature.</p>
+    <button class="details-btn" onclick="showDetails('Bali')">View Details</button>
+</div>
+
+<div class="card">
+    <div class="photo japan"></div>
+    <h3>Japan</h3>
+    <p>Tradition, culture and beautiful landscapes.</p>
+    <button class="details-btn" onclick="showDetails('Japan')">View Details</button>
+</div>
+    </div>
+</section>
+
+<section class="about">
+    <p class="tagline">YOUR JOURNEY, OUR PASSION</p>
+    <h2>Discover More. Experience More.</h2>
+    <p>Every destination has a story waiting to be discovered.</p>
+</section>
+<section class="testimonials">
+    <p class="tagline">TRAVELLER STORIES</p>
+    <h2>What Our Travellers Say</h2>
+
+    <div class="review-cards">
+
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Kashmir was a dream destination. The experience was unforgettable!"</p>
+            <h3>Priya Sharma</h3>
+            <span>Travelled to Kashmir</span>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Goa was beautiful. Every moment felt special and memorable."</p>
+            <h3>Rahul Mehta</h3>
+            <span>Travelled to Goa</span>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Paris was magical. I loved exploring its beautiful streets!"</p>
+            <h3>Ananya Verma</h3>
+            <span>Travelled to Paris</span>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <p class="tagline">GET IN TOUCH</p>
+    <h2>Let's Plan Your Next Journey</h2>
+ <button class="details-btn" onclick="closeDetails(); document.getElementById('contact').scrollIntoView({behavior:'smooth'});">
+    PLAN YOUR TRIP
+</button>
+<form class="contact-form" onsubmit="submitForm(event)">
+
+    <input type="text" placeholder="Your Full Name" required>
+
+    <input type="email" placeholder="Your Email Address" required>
+
+    <select required>
+        <option value="">Select Your Dream Destination</option>
+        <option>Kashmir</option>
+        <option>Goa</option>
+        <option>Paris</option>
+        <option>Switzerland</option>
+    </select>
+
+    <textarea placeholder="Tell us about your dream trip..." rows="5" required></textarea>
+
+    <button type="submit" class="details-btn">SEND MESSAGE</button>
+
+</form>
+    <p>Email: explore@example.com</p>
+</section>
+
+<footer>
+    <p>© 2026 Explore The World. All Rights Reserved.</p>
+</footer>
+<script>
+function searchDestinations() {
+    let input = document.getElementById("searchBox").value.toLowerCase();
+
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(function(card) {
+        let name = card.querySelector("h3").innerText.toLowerCase();
+
+        if (name.includes(input)) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("active");
+}
+
+function closeMenu() {
+    document.querySelector(".nav-links").classList.remove("active");
+}f
+   function showDetails(place) {
+    let destinations = {
+        "Kashmir": {
+            description: "Explore beautiful valleys, lakes and mountains in Kashmir.",
+            location: "Jammu and Kashmir, India",
+            bestTime: "March to October",
+            attractions: "Dal Lake, Gulmarg and Pahalgam",
+            image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=800"
+        },
+        "Goa": {
+            description: "Enjoy beautiful beaches, sunsets and coastal culture in Goa.",
+            location: "Goa, India",
+            bestTime: "November to February",
+            attractions: "Baga Beach, Fort Aguada and Old Goa",
+            image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800"
+        },
+        "Paris": {
+            description: "Discover the Eiffel Tower, museums and beautiful streets of Paris.",
+            location: "Paris, France",
+            bestTime: "April to June and September to October",
+            attractions: "Eiffel Tower, Louvre Museum and Arc de Triomphe",
+            image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800"
+        },
+        "Switzerland": {
+            description: "Explore scenic mountains, lakes and charming villages.",
+            location: "Switzerland, Europe",
+            bestTime: "June to September",
+            attractions: "Lucerne, Interlaken and Matterhorn",
+            image: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800"
+        },
+"London": {
+    description: "Explore iconic landmarks and vibrant city life.",
+    location: "London, England",
+    bestTime: "May to September",
+    attractions: "Big Ben, London Eye and Tower Bridge",
+    image: "london.jpg"
+},
+"Dubai": {
+    description: "Discover luxury, modern architecture and desert adventures.",
+    location: "Dubai, United Arab Emirates",
+    bestTime: "November to March",
+    attractions: "Burj Khalifa, Dubai Mall and Palm Jumeirah",
+    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800"
+},
+"Bali": {
+    description: "Enjoy tropical beaches, temples and lush green landscapes.",
+    location: "Bali, Indonesia",
+    bestTime: "April to October",
+    attractions: "Ubud, Tanah Lot and Kuta Beach",
+    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800"
+},
+"Japan": {
+    description: "Experience traditional culture, modern cities and beautiful scenery.",
+    location: "Japan",
+    bestTime: "March to May",
+    attractions: "Tokyo, Mount Fuji and Kyoto",
+    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800"
+}
+    };
+
+    let data = destinations[place];
+
+    document.getElementById("detailImage").src = data.image;
+    document.getElementById("detailTitle").innerText = place;
+    document.getElementById("detailDescription").innerText = data.description;
+    document.getElementById("detailLocation").innerText = "Location: " + data.location;
+    document.getElementById("detailBestTime").innerText = "Best Time: " + data.bestTime;
+    document.getElementById("detailAttractions").innerText = "Famous Attractions: " + data.attractions;
+    document.getElementById("detailsModal").style.display = "flex";
+}
+
+function closeDetails() {
+    document.getElementById("detailsModal").style.display = "none";
+}
+function submitForm(event) {
+    event.preventDefault();
+
+    alert("Thank you! Your travel enquiry has been received.");
+
+    event.target.reset();
+}
+    
+
+    </script>
+<div id="detailsModal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="closeDetails()">×</button>
+        <p class="tagline">EXPLORE THE WORLD</p>
+<img id="detailImage" src="" alt="Destination" class="detail-image">
+        <h2 id="detailTitle">Destination</h2>
+        <p id="detailDescription"></p>
+<p id="detailLocation"></p>
+<p id="detailBestTime"></p>
+<p id="detailAttractions"></p>
+<button class="details-btn" onclick="closeDetails(); document.getElementById('contact').scrollIntoView({behavior:'smooth'});">
+    PLAN YOUR TRIP
+</button>
+    </div>
+</div>
+</body>
+</html>
